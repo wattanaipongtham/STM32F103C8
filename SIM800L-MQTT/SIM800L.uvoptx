@@ -155,6 +155,11 @@
           <WinNumber>1</WinNumber>
           <ItemText>RES_CMD</ItemText>
         </Ww>
+        <Ww>
+          <count>1</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>count</ItemText>
+        </Ww>
       </WatchWindow1>
       <Tracepoint>
         <THDelay>0</THDelay>
@@ -202,6 +207,10 @@
         <Entry>
           <Name>System Viewer\DMA1</Name>
           <WinId>35905</WinId>
+        </Entry>
+        <Entry>
+          <Name>System Viewer\GPIOC</Name>
+          <WinId>35902</WinId>
         </Entry>
         <Entry>
           <Name>System Viewer\NVIC</Name>
@@ -255,7 +264,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\UART\wattanai_stm32f103c8_clock_config.c</PathWithFileName>
+      <PathWithFileName>..\..\UART\wattanai_stm32f103c8_clock_config.c</PathWithFileName>
       <FilenameWithoutPath>wattanai_stm32f103c8_clock_config.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -267,7 +276,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\UART\wattanai_stm32f103c8_uart1.c</PathWithFileName>
+      <PathWithFileName>..\..\UART\wattanai_stm32f103c8_uart1.c</PathWithFileName>
       <FilenameWithoutPath>wattanai_stm32f103c8_uart1.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -276,7 +285,7 @@
 
   <Group>
     <GroupName>Inc</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -287,7 +296,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\UART\wattanai_stm32f103c8_clock_config.h</PathWithFileName>
+      <PathWithFileName>..\..\UART\wattanai_stm32f103c8_clock_config.h</PathWithFileName>
       <FilenameWithoutPath>wattanai_stm32f103c8_clock_config.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -299,7 +308,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\UART\wattanai_stm32f103c8_uart1.h</PathWithFileName>
+      <PathWithFileName>..\..\UART\wattanai_stm32f103c8_uart1.h</PathWithFileName>
       <FilenameWithoutPath>wattanai_stm32f103c8_uart1.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>

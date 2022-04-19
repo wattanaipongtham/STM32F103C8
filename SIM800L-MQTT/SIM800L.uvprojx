@@ -396,12 +396,12 @@
             <File>
               <FileName>wattanai_stm32f103c8_clock_config.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\UART\wattanai_stm32f103c8_clock_config.c</FilePath>
+              <FilePath>..\..\UART\wattanai_stm32f103c8_clock_config.c</FilePath>
             </File>
             <File>
               <FileName>wattanai_stm32f103c8_uart1.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\UART\wattanai_stm32f103c8_uart1.c</FilePath>
+              <FilePath>..\..\UART\wattanai_stm32f103c8_uart1.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -411,12 +411,12 @@
             <File>
               <FileName>wattanai_stm32f103c8_clock_config.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\UART\wattanai_stm32f103c8_clock_config.h</FilePath>
+              <FilePath>..\..\UART\wattanai_stm32f103c8_clock_config.h</FilePath>
             </File>
             <File>
               <FileName>wattanai_stm32f103c8_uart1.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\UART\wattanai_stm32f103c8_uart1.h</FilePath>
+              <FilePath>..\..\UART\wattanai_stm32f103c8_uart1.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -473,5 +473,14 @@
       </file>
     </files>
   </RTE>
+
+  <LayerInfo>
+    <Layers>
+      <Layer>
+        <LayName>SIM800L</LayName>
+        <LayPrjMark>1</LayPrjMark>
+      </Layer>
+    </Layers>
+  </LayerInfo>
 
 </Project>

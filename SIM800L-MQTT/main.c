@@ -20,19 +20,17 @@ char RES_CIICR[50];
 char RES_CIFSR[50];
 char RES_CIPSTART[50];
 /*=========================================================================*/
-int i=0;
+int count=0;
 
 int main()
 {
 	system_clock_config();
 	RCC->APB2ENR	|=	(1U<<4);
 	GPIOC->CRH		|=	(0x44744444UL);
-	GPIOC->ODR		&=	~(0x0000UL);
-	
-	uart1_tx_Init();
+	GPIOC->ODR		&=	~(0x2000UL);
 	uart1_rx_Init();
+	NVIC_EnableIRQ(USART1_IRQn);
 	DMA1_channel5_init((uint32_t) RES_CMD, (uint32_t) &USART1->DR, 4);
-	DMA1_channel4_init((uint32_t) AT_CMD, (uint32_t) &USART1->DR, 4);
 	while(1)
 	{
 	
@@ -41,21 +39,23 @@ int main()
 
 void USART1_IRQHandler(void)
 {
-	GPIOC->ODR		|=	(0x2000UL);
-}
-
-void DMA1_Channel4_IRQHandler(void)
-{
-	/*if(DMA1->ISR & (1U<<13))
+	if(GPIOC->ODR == (0x0000UL))
 	{
-		DMA1->IFCR |= (1U<<13);
-	}*/
-}
-
-void DMA1_Channel5_IRQHandler(void)
-{
-	/*if(DMA1->ISR & (1U<<17))
+		__IO uint32_t tmpreg;
+		tmpreg = USART1->SR;
+		(void) tmpreg;
+		tmpreg = USART1->DR;
+		(void) tmpreg;
+		GPIOC->ODR |=	(0x2000UL);
+		count = count + 1;
+	}else
 	{
-		DMA1->IFCR |= (1U<<17);
-	}*/
+		__IO uint32_t tmpreg;
+		tmpreg = USART1->SR;
+		(void) tmpreg;
+		tmpreg = USART1->DR;
+		(void) tmpreg;
+		GPIOC->ODR	&=	(0x0000UL);
+		count = count + 2;
+	}
 }

@@ -1,45 +1,45 @@
 Dependencies for Project 'SIM800L', Target 'STM32F103C8': (DO NOT MODIFY !)
 CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARMCC
-F (.\main.c)(0x625D5D62)(-c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\Inc -I .\Src-I.\RTE\Device\STM32F103C8-I.\RTE\_STM32F103C8-IH:\Keil_v5\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IH:\Keil_v5\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (.\main.c)(0x625EEB65)(-c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\Inc -I .\Src-I.\RTE\Device\STM32F103C8-I.\RTE\_STM32F103C8-IH:\Keil_v5\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IH:\Keil_v5\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (H:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x60253184)
 I (H:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025318E)
 I (H:\Keil_v5\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\stm32f10x.h)(0x61AD876E)
-I (.\RTE\_STM32F103C8\RTE_Components.h)(0x625CE1A4)
+I (.\RTE\_STM32F103C8\RTE_Components.h)(0x625DA4B9)
 I (H:\Keil_v5\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\core_cm3.h)(0x60D3F6F2)
 I (H:\Keil_v5\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_version.h)(0x60D3F6F2)
 I (H:\Keil_v5\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_compiler.h)(0x60D3F6F2)
 I (H:\Keil_v5\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_armcc.h)(0x60D3F6F2)
 I (H:\Keil_v5\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\system_stm32f10x.h)(0x61AD876E)
-I (.\Inc\wattanai_stm32f103c8_uart1.h)(0x625C2C59)
-I (.\Inc\wattanai_stm32f103c8_clock_config.h)(0x62568CF3)
-F (..\UART\wattanai_stm32f103c8_clock_config.c)(0x625D4019)(-c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\Inc -I .\Src-I.\RTE\Device\STM32F103C8-I.\RTE\_STM32F103C8-IH:\Keil_v5\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IH:\Keil_v5\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o .\objects\wattanai_stm32f103c8_clock_config.o --omf_browse .\objects\wattanai_stm32f103c8_clock_config.crf --depend .\objects\wattanai_stm32f103c8_clock_config.d)
-I (..\UART\wattanai_stm32f103c8_clock_config.h)(0x625D4022)
+I (.\Inc\wattanai_stm32f103c8_uart1.h)(0x625DA4B9)
+I (.\Inc\wattanai_stm32f103c8_clock_config.h)(0x625DA4B9)
+F (..\..\UART\wattanai_stm32f103c8_clock_config.c)(0x625D4019)(-c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\Inc -I .\Src-I.\RTE\Device\STM32F103C8-I.\RTE\_STM32F103C8-IH:\Keil_v5\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IH:\Keil_v5\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o .\objects\wattanai_stm32f103c8_clock_config.o --omf_browse .\objects\wattanai_stm32f103c8_clock_config.crf --depend .\objects\wattanai_stm32f103c8_clock_config.d)
+I (..\..\UART\wattanai_stm32f103c8_clock_config.h)(0x625D4022)
 I (H:\Keil_v5\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\stm32f10x.h)(0x61AD876E)
-I (.\RTE\_STM32F103C8\RTE_Components.h)(0x625CE1A4)
+I (.\RTE\_STM32F103C8\RTE_Components.h)(0x625DA4B9)
 I (H:\Keil_v5\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\core_cm3.h)(0x60D3F6F2)
 I (H:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025318E)
 I (H:\Keil_v5\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_version.h)(0x60D3F6F2)
 I (H:\Keil_v5\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_compiler.h)(0x60D3F6F2)
 I (H:\Keil_v5\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_armcc.h)(0x60D3F6F2)
 I (H:\Keil_v5\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\system_stm32f10x.h)(0x61AD876E)
-F (..\UART\wattanai_stm32f103c8_uart1.c)(0x625D6134)(-c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\Inc -I .\Src-I.\RTE\Device\STM32F103C8-I.\RTE\_STM32F103C8-IH:\Keil_v5\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IH:\Keil_v5\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o .\objects\wattanai_stm32f103c8_uart1.o --omf_browse .\objects\wattanai_stm32f103c8_uart1.crf --depend .\objects\wattanai_stm32f103c8_uart1.d)
+F (..\..\UART\wattanai_stm32f103c8_uart1.c)(0x625E809C)(-c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\Inc -I .\Src-I.\RTE\Device\STM32F103C8-I.\RTE\_STM32F103C8-IH:\Keil_v5\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IH:\Keil_v5\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o .\objects\wattanai_stm32f103c8_uart1.o --omf_browse .\objects\wattanai_stm32f103c8_uart1.crf --depend .\objects\wattanai_stm32f103c8_uart1.d)
 I (H:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x60253184)
 I (H:\Keil_v5\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\stm32f10x.h)(0x61AD876E)
-I (.\RTE\_STM32F103C8\RTE_Components.h)(0x625CE1A4)
+I (.\RTE\_STM32F103C8\RTE_Components.h)(0x625DA4B9)
 I (H:\Keil_v5\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\core_cm3.h)(0x60D3F6F2)
 I (H:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025318E)
 I (H:\Keil_v5\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_version.h)(0x60D3F6F2)
 I (H:\Keil_v5\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_compiler.h)(0x60D3F6F2)
 I (H:\Keil_v5\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_armcc.h)(0x60D3F6F2)
 I (H:\Keil_v5\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\system_stm32f10x.h)(0x61AD876E)
-I (..\UART\wattanai_stm32f103c8_uart1.h)(0x625C2C59)
-F (..\UART\wattanai_stm32f103c8_clock_config.h)(0x625D4022)()
-F (..\UART\wattanai_stm32f103c8_uart1.h)(0x625C2C59)()
-F (RTE\Device\STM32F103C8\RTE_Device.h)(0x5FC05DFA)()
-F (RTE\Device\STM32F103C8\startup_stm32f10x_md.s)(0x61AD876E)(--cpu Cortex-M3 --pd "__EVAL SETA 1" -g --apcs=interwork -I.\RTE\Device\STM32F103C8-I.\RTE\_STM32F103C8-IH:\Keil_v5\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IH:\Keil_v5\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include--pd "__UVISION_VERSION SETA 536" --pd "_RTE_ SETA 1" --pd "STM32F10X_MD SETA 1" --pd "_RTE_ SETA 1"--list .\listings\startup_stm32f10x_md.lst --xref -o .\objects\startup_stm32f10x_md.o --depend .\objects\startup_stm32f10x_md.d)
-F (RTE\Device\STM32F103C8\system_stm32f10x.c)(0x61AD876E)(-c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\Inc -I .\Src-I.\RTE\Device\STM32F103C8-I.\RTE\_STM32F103C8-IH:\Keil_v5\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IH:\Keil_v5\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o .\objects\system_stm32f10x.o --omf_browse .\objects\system_stm32f10x.crf --depend .\objects\system_stm32f10x.d)
+I (..\..\UART\wattanai_stm32f103c8_uart1.h)(0x625C2C59)
+F (..\..\UART\wattanai_stm32f103c8_clock_config.h)(0x625D4022)()
+F (..\..\UART\wattanai_stm32f103c8_uart1.h)(0x625C2C59)()
+F (RTE\Device\STM32F103C8\RTE_Device.h)(0x625DA4B9)()
+F (RTE\Device\STM32F103C8\startup_stm32f10x_md.s)(0x625DA4B9)(--cpu Cortex-M3 --pd "__EVAL SETA 1" -g --apcs=interwork -I.\RTE\Device\STM32F103C8-I.\RTE\_STM32F103C8-IH:\Keil_v5\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IH:\Keil_v5\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include--pd "__UVISION_VERSION SETA 536" --pd "_RTE_ SETA 1" --pd "STM32F10X_MD SETA 1" --pd "_RTE_ SETA 1"--list .\listings\startup_stm32f10x_md.lst --xref -o .\objects\startup_stm32f10x_md.o --depend .\objects\startup_stm32f10x_md.d)
+F (RTE\Device\STM32F103C8\system_stm32f10x.c)(0x625DA4B9)(-c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\Inc -I .\Src-I.\RTE\Device\STM32F103C8-I.\RTE\_STM32F103C8-IH:\Keil_v5\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IH:\Keil_v5\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o .\objects\system_stm32f10x.o --omf_browse .\objects\system_stm32f10x.crf --depend .\objects\system_stm32f10x.d)
 I (H:\Keil_v5\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\stm32f10x.h)(0x61AD876E)
-I (.\RTE\_STM32F103C8\RTE_Components.h)(0x625CE1A4)
+I (.\RTE\_STM32F103C8\RTE_Components.h)(0x625DA4B9)
 I (H:\Keil_v5\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\core_cm3.h)(0x60D3F6F2)
 I (H:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025318E)
 I (H:\Keil_v5\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_version.h)(0x60D3F6F2)
