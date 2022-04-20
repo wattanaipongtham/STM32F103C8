@@ -1,6 +1,7 @@
 .\objects\main.o: main.c
 .\objects\main.o: H:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\main.o: H:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\main.o: H:\Keil_v5\ARM\ARMCC\Bin\..\include\ctype.h
 .\objects\main.o: H:\Keil_v5\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\stm32f10x.h
 .\objects\main.o: .\RTE\_STM32F103C8\RTE_Components.h
 .\objects\main.o: H:\Keil_v5\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\core_cm3.h

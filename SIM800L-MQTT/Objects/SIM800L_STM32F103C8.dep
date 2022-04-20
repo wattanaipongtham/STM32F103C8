@@ -1,8 +1,9 @@
 Dependencies for Project 'SIM800L', Target 'STM32F103C8': (DO NOT MODIFY !)
 CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARMCC
-F (.\main.c)(0x625EEB65)(-c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\Inc -I .\Src-I.\RTE\Device\STM32F103C8-I.\RTE\_STM32F103C8-IH:\Keil_v5\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IH:\Keil_v5\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (.\main.c)(0x625F83A7)(-c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\Inc -I .\Src-I.\RTE\Device\STM32F103C8-I.\RTE\_STM32F103C8-IH:\Keil_v5\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IH:\Keil_v5\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (H:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x60253184)
 I (H:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025318E)
+I (H:\Keil_v5\ARM\ARMCC\include\ctype.h)(0x60253186)
 I (H:\Keil_v5\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\stm32f10x.h)(0x61AD876E)
 I (.\RTE\_STM32F103C8\RTE_Components.h)(0x625DA4B9)
 I (H:\Keil_v5\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\core_cm3.h)(0x60D3F6F2)
