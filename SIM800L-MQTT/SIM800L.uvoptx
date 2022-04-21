@@ -158,25 +158,55 @@
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
-          <ItemText>RES_CSTT</ItemText>
+          <ItemText>RES_CIPSHUT</ItemText>
         </Ww>
         <Ww>
           <count>2</count>
           <WinNumber>1</WinNumber>
-          <ItemText>RES_CIICR</ItemText>
+          <ItemText>RES_CGATT</ItemText>
         </Ww>
         <Ww>
           <count>3</count>
           <WinNumber>1</WinNumber>
-          <ItemText>RES_CIFSR</ItemText>
+          <ItemText>RES_CFUN</ItemText>
         </Ww>
         <Ww>
           <count>4</count>
           <WinNumber>1</WinNumber>
-          <ItemText>RES_CIPSTART</ItemText>
+          <ItemText>RES_CPIN</ItemText>
         </Ww>
         <Ww>
           <count>5</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>RES_CSTT</ItemText>
+        </Ww>
+        <Ww>
+          <count>6</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>RES_CIICR</ItemText>
+        </Ww>
+        <Ww>
+          <count>7</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>RES_CIFSR</ItemText>
+        </Ww>
+        <Ww>
+          <count>8</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>RES_CIPSTART</ItemText>
+        </Ww>
+        <Ww>
+          <count>9</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>RES_CIPSTART2</ItemText>
+        </Ww>
+        <Ww>
+          <count>10</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>RES_CIPSEND</ItemText>
+        </Ww>
+        <Ww>
+          <count>11</count>
           <WinNumber>1</WinNumber>
           <ItemText>count</ItemText>
         </Ww>
