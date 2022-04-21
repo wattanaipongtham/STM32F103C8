@@ -208,6 +208,11 @@
         <Ww>
           <count>11</count>
           <WinNumber>1</WinNumber>
+          <ItemText>RES_SERVER</ItemText>
+        </Ww>
+        <Ww>
+          <count>12</count>
+          <WinNumber>1</WinNumber>
           <ItemText>count</ItemText>
         </Ww>
       </WatchWindow1>

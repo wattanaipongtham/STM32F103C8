@@ -14,8 +14,10 @@ char AT_CPIN[10]			=	"AT+CPIN?\r\n";
 char AT_CSTT[34] 			= "AT+CSTT=\"internet\",\"true\",\"true\"\r\n";
 char AT_CIICR[10] 		= "AT+CIICR\r\n";
 char AT_CIFSR[10] 		= "AT+CIFSR\r\n";
-char AT_CIPSTART[43] 	= "AT+CIPSTART=\"TCP\",\"167.71.217.190\",\"1883\"\r\n";
-char AT_CIPSEND[12] 	=	"AT+CIPSEND\r\n";
+//char AT_CIPSTART[43] 	= "AT+CIPSTART=\"TCP\",\"167.71.217.190\",\"1883\"\r\n";
+char AT_CIPSTART[42]	=	"AT+CIPSTART=\"TCP\",\"35.157.197.42\",\"1883\"\r\n";
+char AT_CIPSEND[15] 	=	"AT+CIPSEND=39\r\n";
+char DATA[39]					=	{0x10, 0x11, 0x00, 0x04, 0x4D, 0x51, 0x54, 0x54, 0x04, 0x02, 0x00, 0x3C, 0x00, 0x05, 0x50, 0x51, 0x52, 0x53, 0x54, 0x30, 0x11, 0x00, 0x08, 0x57, 0x41, 0x54, 0x54, 0x41, 0x4E, 0x41, 0x49, 0x05, 0x48, 0x45, 0x4C, 0x4C, 0x4F, 0x21, 0x0A};
 /*=========================================================================*/
 
 
@@ -31,6 +33,7 @@ char RES_CIFSR[50];
 char RES_CIPSTART[50];
 char RES_CIPSTART2[50];
 char RES_CIPSEND[50];
+char RES_SERVER[50];
 /*=========================================================================*/
 int count=0;
 __IO uint32_t tmpreg;
@@ -173,7 +176,7 @@ void USART1_IRQHandler(void)
 				{
 					count = count + 1;
 					DMA1_channel5_init((uint32_t) RES_CIPSTART, (uint32_t) &USART1->DR, 50);
-					DMA1_channel4_init((uint32_t) AT_CIPSTART, (uint32_t) &USART1->DR, 43);
+					DMA1_channel4_init((uint32_t) AT_CIPSTART, (uint32_t) &USART1->DR, 42);
 				}else
 				{
 					DMA1_channel5_init((uint32_t) RES_CIFSR, (uint32_t) &USART1->DR, 50);
@@ -202,11 +205,26 @@ void USART1_IRQHandler(void)
 				{
 					count = count + 1;
 					DMA1_channel5_init((uint32_t) RES_CIPSEND, (uint32_t) &USART1->DR, 50);
-					DMA1_channel4_init((uint32_t) AT_CIPSEND, (uint32_t) &USART1->DR, 12);
+					DMA1_channel4_init((uint32_t) AT_CIPSEND, (uint32_t) &USART1->DR, 15);
 				}else
 				{
-					//DMA1_channel5_init((uint32_t) RES_CIPSTART, (uint32_t) &USART1->DR, 50);
-					//DMA1_channel4_init((uint32_t) AT_CIPSTART, (uint32_t) &USART1->DR, 10);
+					DMA1_channel5_init((uint32_t) RES_CIPSTART, (uint32_t) &USART1->DR, 50);
+					DMA1_channel4_init((uint32_t) AT_CIPSTART, (uint32_t) &USART1->DR, 10);
+				}
+				break;
+			case 10:
+				tmpreg = USART1->SR;
+				(void) tmpreg;
+				tmpreg = USART1->DR;
+				(void) tmpreg;
+				if(RES_CIPSEND[2] == '>')
+				{
+					count = count + 1;
+					DMA1_channel5_init((uint32_t) RES_SERVER, (uint32_t) &USART1->DR, 50);
+					DMA1_channel4_init((uint32_t) DATA, (uint32_t) &USART1->DR, 39);
+				}else
+				{
+
 				}
 				break;
 			default :
