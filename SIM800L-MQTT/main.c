@@ -2,7 +2,7 @@
 #include <stdint.h>
 #include <ctype.h>
 #include "stm32f10x.h"
-#include "wattanai_stm32f103c8_uart1.h"
+#include "wattanai_stm32f103c8_uart.h"
 #include "wattanai_stm32f103c8_clock_config.h"
 
 /*=============================SIM800L COMMAND=============================*/
@@ -14,10 +14,9 @@ char AT_CPIN[10]			=	"AT+CPIN?\r\n";
 char AT_CSTT[34] 			= "AT+CSTT=\"internet\",\"true\",\"true\"\r\n";
 char AT_CIICR[10] 		= "AT+CIICR\r\n";
 char AT_CIFSR[10] 		= "AT+CIFSR\r\n";
-//char AT_CIPSTART[43] 	= "AT+CIPSTART=\"TCP\",\"167.71.217.190\",\"1883\"\r\n";
 char AT_CIPSTART[42]	=	"AT+CIPSTART=\"TCP\",\"35.157.197.42\",\"1883\"\r\n";
-char AT_CIPSEND[15] 	=	"AT+CIPSEND=39\r\n";
-char DATA[39]					=	{0x10, 0x11, 0x00, 0x04, 0x4D, 0x51, 0x54, 0x54, 0x04, 0x02, 0x00, 0x3C, 0x00, 0x05, 0x50, 0x51, 0x52, 0x53, 0x54, 0x30, 0x11, 0x00, 0x08, 0x57, 0x41, 0x54, 0x54, 0x41, 0x4E, 0x41, 0x49, 0x05, 0x48, 0x45, 0x4C, 0x4C, 0x4F, 0x21, 0x0A};
+char AT_CIPSEND[15] 	=	"AT+CIPSEND=42\r\n";
+char DATA[44]					=	{0x10, 0x11, 0x00, 0x04, 0x4D, 0x51, 0x54, 0x54, 0x04, 0x02, 0x00, 0x3C, 0x00, 0x05, 0x50, 0x51, 0x52, 0x53, 0x54, 0x30, 0x15, 0x00, 0x08, 0x57, 0x41, 0x54, 0x54, 0x41, 0x4E, 0x41, 0x49, 0x0B, 0x7B, 0x22, 0x64, 0x22, 0x3A, 0x30, 0x30, 0x30, 0x30, 0x7D, 0x0A};
 /*=========================================================================*/
 
 
@@ -34,17 +33,20 @@ char RES_CIPSTART[50];
 char RES_CIPSTART2[50];
 char RES_CIPSEND[50];
 char RES_SERVER[50];
+char RES_MX7383[50];
 /*=========================================================================*/
-int count=0;
+int count=0, distance=0, num=0, digit1=0, digit2=0, digit3=0, digit4=0;
 __IO uint32_t tmpreg;
+
 int main()
 {
 	system_clock_config();
 	uart1_rx_Init();
 	uart1_tx_Init();
+	uart2_rx_Init();
 	NVIC_EnableIRQ(USART1_IRQn);
-	DMA1_channel5_init((uint32_t) RES_CMD, (uint32_t) &USART1->DR, 50);
-	DMA1_channel4_init((uint32_t) AT_CMD, (uint32_t) &USART1->DR, 4);
+	NVIC_EnableIRQ(USART2_IRQn);
+	DMA1_channel6_init((uint32_t) RES_MX7383, (uint32_t) &USART2->DR, 6);
 	while(1)
 	{
 	
@@ -221,7 +223,7 @@ void USART1_IRQHandler(void)
 				{
 					count = count + 1;
 					DMA1_channel5_init((uint32_t) RES_SERVER, (uint32_t) &USART1->DR, 50);
-					DMA1_channel4_init((uint32_t) DATA, (uint32_t) &USART1->DR, 39);
+					DMA1_channel4_init((uint32_t) DATA, (uint32_t) &USART1->DR, 44);
 				}else
 				{
 
@@ -234,5 +236,43 @@ void USART1_IRQHandler(void)
 				(void) tmpreg;
 				break;
 		}
+	}
+}
+
+void USART2_IRQHandler(void)
+{
+	tmpreg = USART2->SR;
+	(void) tmpreg;
+	tmpreg = USART2->DR;
+	(void) tmpreg;
+	if(num < 100){
+	num = num + 1;
+	distance += ((int)RES_MX7383[1] - 48)*1000;
+	distance += ((int)RES_MX7383[2] - 48)*100;
+	distance += ((int)RES_MX7383[3] - 48)*10;
+	distance += ((int)RES_MX7383[4] - 48)*1;
+	DMA1_channel6_init((uint32_t) RES_MX7383, (uint32_t) &USART2->DR, 6);
+	}else
+	{
+		/*Disable Receiver*/
+		USART2->CR1		&=	~(1U<<2);
+	
+		/*Disable UART2*/
+		USART2->CR1		&=	~(1U<<13);
+
+		distance = distance/100;
+		digit1 = distance/1000;
+		digit2 = (distance/100)%10;
+		digit3 = (distance%100)/10;
+		digit4 = distance%10;
+		if(digit1 == 0)
+		{
+			DATA[37] = 0x20;
+		}
+		DATA[38] = digit2+48;
+		DATA[39] = digit3+48;
+		DATA[40] = digit4+48;
+		DMA1_channel5_init((uint32_t) RES_CMD, (uint32_t) &USART1->DR, 50);
+		DMA1_channel4_init((uint32_t) AT_CMD, (uint32_t) &USART1->DR, 4);
 	}
 }

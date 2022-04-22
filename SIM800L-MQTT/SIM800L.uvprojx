@@ -399,9 +399,9 @@
               <FilePath>..\..\UART\wattanai_stm32f103c8_clock_config.c</FilePath>
             </File>
             <File>
-              <FileName>wattanai_stm32f103c8_uart1.c</FileName>
+              <FileName>wattanai_stm32f103c8_uart.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\UART\wattanai_stm32f103c8_uart1.c</FilePath>
+              <FilePath>.\Src\wattanai_stm32f103c8_uart.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -414,9 +414,9 @@
               <FilePath>..\..\UART\wattanai_stm32f103c8_clock_config.h</FilePath>
             </File>
             <File>
-              <FileName>wattanai_stm32f103c8_uart1.h</FileName>
+              <FileName>wattanai_stm32f103c8_uart.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\UART\wattanai_stm32f103c8_uart1.h</FilePath>
+              <FilePath>.\Inc\wattanai_stm32f103c8_uart.h</FilePath>
             </File>
           </Files>
         </Group>
