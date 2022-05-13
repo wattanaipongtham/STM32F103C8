@@ -403,6 +403,11 @@
               <FileType>1</FileType>
               <FilePath>.\Src\wattanai_stm32f103c8_uart.c</FilePath>
             </File>
+            <File>
+              <FileName>sysTick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Src\sysTick.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -417,6 +422,11 @@
               <FileName>wattanai_stm32f103c8_uart.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Inc\wattanai_stm32f103c8_uart.h</FilePath>
+            </File>
+            <File>
+              <FileName>sysTick.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Inc\sysTick.h</FilePath>
             </File>
           </Files>
         </Group>

@@ -2,11 +2,14 @@
 #include <stdint.h>
 #include <ctype.h>
 #include "stm32f10x.h"
+#include "sysTick.h"
 #include "wattanai_stm32f103c8_uart.h"
 #include "wattanai_stm32f103c8_clock_config.h"
 
 /*=============================SIM800L COMMAND=============================*/
 char AT_CMD[4] 				= "AT\r\n";
+char AT_CSQ[8]				=	"AT+CSQ\r\n";
+char AT_CREG[9]				=	"AT+CREG\r\n";
 char AT_CIPSHUT[12] 	= "AT+CIPSHUT\r\n";
 char AT_CFUN[11]			=	"AT+CFUN=1\r\n";
 char AT_CGATT[12]			=	"AT+CGATT=1\r\n";
@@ -14,14 +17,15 @@ char AT_CPIN[10]			=	"AT+CPIN?\r\n";
 char AT_CSTT[34] 			= "AT+CSTT=\"internet\",\"true\",\"true\"\r\n";
 char AT_CIICR[10] 		= "AT+CIICR\r\n";
 char AT_CIFSR[10] 		= "AT+CIFSR\r\n";
-char AT_CIPSTART[42]	=	"AT+CIPSTART=\"TCP\",\"35.157.197.42\",\"1883\"\r\n";
+char AT_CIPSTART[42]	=	"AT+CIPSTART=\"TCP\",\"18.159.219.87\",\"1883\"\r\n";
 char AT_CIPSEND[15] 	=	"AT+CIPSEND=42\r\n";
-char DATA[44]					=	{0x10, 0x11, 0x00, 0x04, 0x4D, 0x51, 0x54, 0x54, 0x04, 0x02, 0x00, 0x3C, 0x00, 0x05, 0x50, 0x51, 0x52, 0x53, 0x54, 0x30, 0x15, 0x00, 0x08, 0x57, 0x41, 0x54, 0x54, 0x41, 0x4E, 0x41, 0x49, 0x0B, 0x7B, 0x22, 0x64, 0x22, 0x3A, 0x30, 0x30, 0x30, 0x30, 0x7D, 0x0A};
+char DATA[44]					=	{0x10, 0x11, 0x00, 0x04, 0x4D, 0x51, 0x54, 0x54, 0x04, 0x02, 0x00, 0x3C, 0x00, 0x05, 0x50, 0x51, 0x52, 0x53, 0x54, 0x30, 0x15, 0x00, 0x09, 0x57, 0x41, 0x54, 0x54, 0x41, 0x4E, 0x41, 0x49, 0x49, 0x7B, 0x22, 0x64, 0x22, 0x3A, 0x30, 0x30, 0x30, 0x30, 0x7D, 0x0A};
 /*=========================================================================*/
 
 
 /*=============================RESPONSE BUFFER=============================*/
 char RES_CMD[50];
+char RES_CREG[50];
 char RES_CIPSHUT[50];
 char RES_CFUN[50];
 char RES_CGATT[50];
@@ -41,6 +45,13 @@ __IO uint32_t tmpreg;
 int main()
 {
 	system_clock_config();
+	RCC->APB2ENR |= (1U<<2);
+	GPIOA->CRL	 = 0x24444444;
+	GPIOA->ODR	 |= (1U<<7);
+	sysTickDelayMs(3000);
+	GPIOA->ODR	 &= ~(1U<<7);
+	sysTickDelayMs(8000);
+	sysTickDelayMs(7000);
 	uart1_rx_Init();
 	uart1_tx_Init();
 	uart2_rx_Init();
@@ -49,7 +60,7 @@ int main()
 	DMA1_channel6_init((uint32_t) RES_MX7383, (uint32_t) &USART2->DR, 6);
 	while(1)
 	{
-	
+		
 	}
 }
 
@@ -62,7 +73,7 @@ void USART1_IRQHandler(void)
 				(void) tmpreg;
 				tmpreg = USART1->DR;
 				(void) tmpreg;
-				if(RES_CMD[2] == 'O' && RES_CMD[3] == 'K')
+				if(RES_CMD[5] == 'O' && RES_CMD[6] == 'K')
 				{
 					count = count + 1;
 					DMA1_channel5_init((uint32_t) RES_CIPSHUT, (uint32_t) &USART1->DR, 50);
@@ -78,7 +89,7 @@ void USART1_IRQHandler(void)
 				(void) tmpreg;
 				tmpreg = USART1->DR;
 				(void) tmpreg;
-				if(RES_CIPSHUT[7] == 'O' && RES_CIPSHUT[8] == 'K')
+				if(RES_CIPSHUT[18] == 'O' && RES_CIPSHUT[19] == 'K')
 				{
 					count = count + 1;
 					DMA1_channel5_init((uint32_t) RES_CGATT, (uint32_t) &USART1->DR, 50);
@@ -94,7 +105,7 @@ void USART1_IRQHandler(void)
 				(void) tmpreg;
 				tmpreg = USART1->DR;
 				(void) tmpreg;
-				if(RES_CGATT[2] == 'O' && RES_CGATT[3] == 'K')
+				if(RES_CGATT[13] == 'O' && RES_CGATT[14] == 'K')
 				{
 					count = count + 1;
 					DMA1_channel5_init((uint32_t) RES_CFUN, (uint32_t) &USART1->DR, 50);
@@ -110,7 +121,7 @@ void USART1_IRQHandler(void)
 				(void) tmpreg;
 				tmpreg = USART1->DR;
 				(void) tmpreg;
-				if(RES_CFUN[2] == 'O' && RES_CFUN[3] == 'K')
+				if(RES_CFUN[12] == 'O' && RES_CFUN[13] == 'K')
 				{
 					count = count + 1;
 					DMA1_channel5_init((uint32_t) RES_CPIN, (uint32_t) &USART1->DR, 50);
@@ -126,7 +137,7 @@ void USART1_IRQHandler(void)
 				(void) tmpreg;
 				tmpreg = USART1->DR;
 				(void) tmpreg;
-				if(RES_CPIN[9] == 'R' && RES_CPIN[10] == 'E' && RES_CPIN[11] == 'A' && RES_CPIN[12] == 'D' && RES_CPIN[13] == 'Y')
+				if(RES_CPIN[18] == 'R' && RES_CPIN[19] == 'E' && RES_CPIN[20] == 'A' && RES_CPIN[21] == 'D' && RES_CPIN[22] == 'Y' && RES_CPIN[27] == 'O' && RES_CPIN[28] == 'K' )
 				{
 					count = count + 1;
 					DMA1_channel5_init((uint32_t) RES_CSTT, (uint32_t) &USART1->DR, 50);
@@ -142,7 +153,7 @@ void USART1_IRQHandler(void)
 				(void) tmpreg;
 				tmpreg = USART1->DR;
 				(void) tmpreg;
-				if(RES_CSTT[2] == 'O' && RES_CSTT[3] == 'K')
+				if(RES_CSTT[35] == 'O' && RES_CSTT[36] == 'K')
 				{
 					count = count + 1;
 					DMA1_channel5_init((uint32_t) RES_CIICR, (uint32_t) &USART1->DR, 50);
@@ -174,7 +185,7 @@ void USART1_IRQHandler(void)
 				(void) tmpreg;
 				tmpreg = USART1->DR;
 				(void) tmpreg;
-				if(isdigit(RES_CIFSR[2]) && isdigit(RES_CIFSR[3]))
+				if(isdigit(RES_CIFSR[11]) && isdigit(RES_CIFSR[12]))
 				{
 					count = count + 1;
 					DMA1_channel5_init((uint32_t) RES_CIPSTART, (uint32_t) &USART1->DR, 50);
@@ -190,12 +201,14 @@ void USART1_IRQHandler(void)
 				(void) tmpreg;
 				tmpreg = USART1->DR;
 				(void) tmpreg;
-				if(RES_CIPSTART[2] == 'O' && RES_CIPSTART[3] == 'K')
+				if(RES_CIPSTART[43] == 'O' && RES_CIPSTART[44] == 'K')
 				{
 					count = count + 1;
+					DMA1_channel5_init((uint32_t) RES_CIPSTART2, (uint32_t) &USART1->DR, 50);
 				}else
 				{
-					
+					DMA1_channel5_init((uint32_t) RES_CIPSTART, (uint32_t) &USART1->DR, 50);
+					DMA1_channel4_init((uint32_t) AT_CIPSTART, (uint32_t) &USART1->DR, 42);
 				}
 				break;
 			case 9:
@@ -203,15 +216,14 @@ void USART1_IRQHandler(void)
 				(void) tmpreg;
 				tmpreg = USART1->DR;
 				(void) tmpreg;
-				if((RES_CIPSTART2[10] == 'O' && RES_CIPSTART2[11] == 'K') || (RES_CIPSTART[16] == 'O' && RES_CIPSTART[17] == 'K'))
+				if(RES_CIPSTART2[10] == 'O' && RES_CIPSTART2[11] == 'K')
 				{
 					count = count + 1;
 					DMA1_channel5_init((uint32_t) RES_CIPSEND, (uint32_t) &USART1->DR, 50);
 					DMA1_channel4_init((uint32_t) AT_CIPSEND, (uint32_t) &USART1->DR, 15);
 				}else
 				{
-					DMA1_channel5_init((uint32_t) RES_CIPSTART, (uint32_t) &USART1->DR, 50);
-					DMA1_channel4_init((uint32_t) AT_CIPSTART, (uint32_t) &USART1->DR, 10);
+
 				}
 				break;
 			case 10:
@@ -219,7 +231,7 @@ void USART1_IRQHandler(void)
 				(void) tmpreg;
 				tmpreg = USART1->DR;
 				(void) tmpreg;
-				if(RES_CIPSEND[2] == '>')
+				if(RES_CIPSEND[16] == '>')
 				{
 					count = count + 1;
 					DMA1_channel5_init((uint32_t) RES_SERVER, (uint32_t) &USART1->DR, 50);

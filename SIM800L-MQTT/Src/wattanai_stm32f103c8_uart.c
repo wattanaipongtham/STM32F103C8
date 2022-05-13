@@ -99,8 +99,8 @@ void uart2_rx_Init(void)
 	/*Enable UART2*/
 	RCC->APB1ENR |= 	(1U<<17);
 	
-	/*Set Port A Pin10 As Input Pull-up Pull-down*/
-	GPIOA->CRH		|=	(1U<<10);
+	/*Set Port A Pin3 As Input Pull-up Pull-down*/
+	GPIOA->CRL		|=	(1U<<10);
 	
 	/*Set Buad Rate 9600*/
 	USART2->BRR		|=	0xEA6;
