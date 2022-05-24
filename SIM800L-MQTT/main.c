@@ -10,19 +10,19 @@ void GSM_POWER_ON(void);
 int GPS_SEARCH_MODE(void);
 
 /*=============================SIM800L COMMAND=============================*/
-char AT_CMD[4]= "AT\r\n";
-char AT_CSQ[8]=	"AT+CSQ\r\n";
-char AT_CREG[9]= "AT+CREG\r\n";
-char AT_CIPSHUT[12]= "AT+CIPSHUT\r\n";
-char AT_CFUN[11]=	"AT+CFUN=1\r\n";
-char AT_CGATT[12]			=	"AT+CGATT=1\r\n";
-char AT_CPIN[10]			=	"AT+CPIN?\r\n";
-char AT_CSTT[34] 			= "AT+CSTT=\"internet\",\"true\",\"true\"\r\n";
-char AT_CIICR[10] 		= "AT+CIICR\r\n";
-char AT_CIFSR[10] 		= "AT+CIFSR\r\n";
+char AT_CMD[4]	= "AT\r\n";
+char AT_CSQ[8]	=	"AT+CSQ\r\n";
+char AT_CREG[9]	= "AT+CREG\r\n";
+char AT_CIPSHUT[12]	= "AT+CIPSHUT\r\n";
+char AT_CFUN[11]	=	"AT+CFUN=1\r\n";
+char AT_CGATT[12]	=	"AT+CGATT=1\r\n";
+char AT_CPIN[10]	=	"AT+CPIN?\r\n";
+char AT_CSTT[34]	= "AT+CSTT=\"internet\",\"true\",\"true\"\r\n";
+char AT_CIICR[10]	= "AT+CIICR\r\n";
+char AT_CIFSR[10]	= "AT+CIFSR\r\n";
 char AT_CIPSTART[42]	=	"AT+CIPSTART=\"TCP\",\"18.159.219.87\",\"1883\"\r\n";
-char AT_CIPSEND[15] 	=	"AT+CIPSEND=42\r\n";
-char DATA[44]					=	{0x10, 0x11, 0x00, 0x04, 0x4D, 0x51, 0x54, 0x54, 0x04, 0x02, 0x00, 0x3C, 0x00, 0x05, 0x50, 0x51, 0x52, 0x53, 0x54, 0x30, 0x15, 0x00, 0x09, 0x57, 0x41, 0x54, 0x54, 0x41, 0x4E, 0x41, 0x49, 0x49, 0x7B, 0x22, 0x64, 0x22, 0x3A, 0x30, 0x30, 0x30, 0x30, 0x7D, 0x0A};
+char AT_CIPSEND[15]	=	"AT+CIPSEND=42\r\n";
+char DATA[44]	=	{0x10, 0x11, 0x00, 0x04, 0x4D, 0x51, 0x54, 0x54, 0x04, 0x02, 0x00, 0x3C, 0x00, 0x05, 0x50, 0x51, 0x52, 0x53, 0x54, 0x30, 0x15, 0x00, 0x09, 0x57, 0x41, 0x54, 0x54, 0x41, 0x4E, 0x41, 0x49, 0x49, 0x7B, 0x22, 0x64, 0x22, 0x3A, 0x30, 0x30, 0x30, 0x30, 0x7D, 0x0A};
 /*=========================================================================*/
 
 
