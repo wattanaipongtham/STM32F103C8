@@ -12,7 +12,7 @@ int GPS_SEARCH_MODE(void);
 /*=============================SIM800L COMMAND=============================*/
 char AT_CMD[4]= "AT\r\n";
 char AT_CSQ[8]=	"AT+CSQ\r\n";
-char AT_CREG[9]=	"AT+CREG\r\n";
+char AT_CREG[9]= "AT+CREG\r\n";
 char AT_CIPSHUT[12]= "AT+CIPSHUT\r\n";
 char AT_CFUN[11]=	"AT+CFUN=1\r\n";
 char AT_CGATT[12]			=	"AT+CGATT=1\r\n";
