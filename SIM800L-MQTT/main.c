@@ -6,6 +6,9 @@
 #include "wattanai_stm32f103c8_uart.h"
 #include "wattanai_stm32f103c8_clock_config.h"
 
+void GSM_POWER_ON(void);
+int GPS_SEARCH_MODE(void);
+
 /*=============================SIM800L COMMAND=============================*/
 char AT_CMD[4] 				= "AT\r\n";
 char AT_CSQ[8]				=	"AT+CSQ\r\n";
@@ -44,20 +47,31 @@ __IO uint32_t tmpreg;
 
 int main()
 {
+	/*Configure System Clock*/
 	system_clock_config();
-	RCC->APB2ENR |= (1U<<2);
-	GPIOA->CRL	 = 0x24444444;
-	GPIOA->ODR	 |= (1U<<7);
-	sysTickDelayMs(3000);
-	GPIOA->ODR	 &= ~(1U<<7);
-	sysTickDelayMs(8000);
-	sysTickDelayMs(7000);
+	
+	if(GPS_SEARCH_MODE())
+	{
+		/*For Receive Data From GPS-Module*/
+		uart3_rx_Init();
+		GPIOC->ODR	&=	~(1U<<13);
+	}
+	else{
+	/*Power On SIM800A*/
+	GSM_POWER_ON();
+	
+	/*For Receive Data From GSM*/
 	uart1_rx_Init();
+	
+	/*For Send Command To GSM*/
 	uart1_tx_Init();
+	
+	/*For Receive Data From MB7383 Sensor*/
 	uart2_rx_Init();
-	NVIC_EnableIRQ(USART1_IRQn);
-	NVIC_EnableIRQ(USART2_IRQn);
+	
+	/*Start Reading Data From MB7383 Sensor*/
 	DMA1_channel6_init((uint32_t) RES_MX7383, (uint32_t) &USART2->DR, 6);
+	}
 	while(1)
 	{
 		
@@ -287,4 +301,43 @@ void USART2_IRQHandler(void)
 		DMA1_channel5_init((uint32_t) RES_CMD, (uint32_t) &USART1->DR, 50);
 		DMA1_channel4_init((uint32_t) AT_CMD, (uint32_t) &USART1->DR, 4);
 	}
+}
+
+void GSM_POWER_ON()
+{
+	/*Enable clock To Port A*/
+	RCC->APB2ENR |= (1U<<2);
+	
+	/*Configure Port A Pin7 As Output Push-Pull 50MHz*/
+	GPIOA->CRL	 &= ~(1U<<31);
+	GPIOA->CRL	 &= ~(1U<<30);
+	GPIOA->CRL	 |= (1U<<29);
+	GPIOA->CRL	 |= (1U<<28);
+	
+	/*Set Port A Pin7*/
+	GPIOA->ODR	 |= (1U<<7);
+	
+	/*Wait 3 Second For Turn On GSM*/
+	sysTickDelayMs(3000);
+	
+	/*Then Reset PortA Pin7*/
+	GPIOA->ODR	 &= ~(1U<<7);
+	
+	/*Wait 15 Second For GSM To Search For Signal*/
+	sysTickDelayMs(5000);
+	sysTickDelayMs(5000);
+	sysTickDelayMs(5000);
+}
+
+int GPS_SEARCH_MODE()
+{
+	/*Enable clock To Port A*/
+	RCC->APB2ENR 	|= 	(1U<<2);
+	
+	/*Configure Port A Pin4 As Input Pull-down*/
+	GPIOA->CRL	 	|= 	(1U<<19);
+	GPIOA->CRL	 	&= 	~(1U<<18);
+	GPIOA->ODR		&=	~(1U<<4);
+	
+	return GPIOA->IDR & (1U<<4);
 }
